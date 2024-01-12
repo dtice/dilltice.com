@@ -1,8 +1,8 @@
-import AddTaskIcon from '@mui/icons-material/AddTask';
-import BugReportIcon from '@mui/icons-material/BugReport';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import ForumIcon from '@mui/icons-material/Forum';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import SchoolIcon from '@mui/icons-material/School';
+import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
-import TerrainIcon from '@mui/icons-material/Terrain';
 
 import asyncComponentLoader from '@/utils/loader';
 
@@ -15,29 +15,29 @@ const routes: Routes = {
     title: 'Welcome',
     icon: HomeIcon,
   },
-  [Pages.Page1]: {
-    component: asyncComponentLoader(() => import('@/pages/Page1')),
-    path: '/page-1',
-    title: 'Page 1',
-    icon: GitHubIcon,
+  [Pages.AboutMe]: {
+    component: asyncComponentLoader(() => import('@/pages/AboutMe')),
+    path: '/about-me',
+    title: 'About Me',
+    icon: PersonIcon,
   },
-  [Pages.Page2]: {
-    component: asyncComponentLoader(() => import('@/pages/Page2')),
-    path: '/page-2',
-    title: 'Page 2',
-    icon: AddTaskIcon,
+  [Pages.Blog]: {
+    component: asyncComponentLoader(() => import('@/pages/Blog')),
+    path: '/blog',
+    title: 'Blog',
+    icon: ForumIcon,
   },
-  [Pages.Page3]: {
-    component: asyncComponentLoader(() => import('@/pages/Page3')),
-    path: '/page-3',
-    title: 'Page 3',
-    icon: TerrainIcon,
+  [Pages.Sandbox]: {
+    component: asyncComponentLoader(() => import('@/pages/Sandbox')),
+    path: '/sandbox',
+    title: 'Sandbox',
+    icon: BeachAccessIcon,
   },
-  [Pages.Page4]: {
-    component: asyncComponentLoader(() => import('@/pages/Page4')),
-    path: '/page-4',
-    title: 'Page 4',
-    icon: BugReportIcon,
+  [Pages.Wiki]: {
+    component: asyncComponentLoader(() => import('@/pages/Wiki')),
+    path: '/wiki',
+    title: 'Wiki',
+    icon: SchoolIcon,
   },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),

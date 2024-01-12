@@ -6,12 +6,12 @@ import Typography from '@mui/material/Typography';
 import Meta from '@/components/Meta';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
 
-function Page4() {
+function Wiki() {
   return (
     <>
-      <Meta title="page 4" />
+      <Meta title="Wiki" />
       <FullSizeCenteredFlexBox flexDirection="column">
-        <Typography variant="h3">Page 4</Typography>
+        <Typography variant="h3">Wiki</Typography>
         <Button
           to={`/${Math.random().toString()}`}
           component={Link}
@@ -27,4 +27,4 @@ function Page4() {
   );
 }
 
-export default Page4;
+export default Wiki;
