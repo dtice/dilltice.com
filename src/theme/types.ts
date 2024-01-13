@@ -1,6 +1,7 @@
 enum Themes {
   DARK = 'dark',
   LIGHT = 'light',
+  SPOOKY = 'spooky',
 }
 
 type CustomThemeProviderProps = {

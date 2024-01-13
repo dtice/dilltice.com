@@ -61,6 +61,19 @@ const themes: Record<Themes, ThemeOptions> = {
       },
     },
   }),
+
+  spooky: deepmerge(sharedTheme, {
+    palette: {
+      mode: 'dark',
+      background: {
+        default: '#111',
+        paper: '#171717',
+      },
+      primary: {
+        main: '#333',
+      },
+    },
+  }),
 };
 
 export default themes;
