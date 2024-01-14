@@ -1,6 +1,13 @@
 import { ThemeOptions } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
+// Spooky
+import BoneCursor from './images/spooky/BoneCursor32.png';
+import BoneCursorPointer from './images/spooky/BoneCursor32Pointer.png';
+import BlackBG from './images/spooky/BlackRockTileBG.png';
+import BlackBrickBG from './images/spooky/BlackWallTileBG.png';
+import GhostSkeleton from './fonts/GhostSkeleton.ttf';
+
 import { Themes } from './types';
 
 const sharedTheme = {
@@ -72,8 +79,49 @@ const themes: Record<Themes, ThemeOptions> = {
       primary: {
         main: '#333',
       },
+      info: {
+        main: '#F00',
+      },
     },
-  }),
+    typography: {
+      fontFamily: '"Ghost Skeleton", Regular',
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            backgroundImage: `URL(${BlackBG})`,
+            backgroundRepeat: 'repeat',
+            cursor: `URL('${BoneCursor}'), auto`,
+            FontFace: [GhostSkeleton],
+          },
+        },
+      },
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundImage: `URL(${BlackBrickBG})`,
+            backgroundRepeat: 'repeat',
+            cursor: `URL(${BoneCursorPointer}), auto`,
+          },
+        },
+      },
+      MuiButtonBase: {
+        styleOverrides: {
+          root: {
+            cursor: `URL(${BoneCursorPointer}), auto`,
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          input: {
+            cursor: `URL(${BoneCursorPointer}), auto`,
+          },
+        },
+      },
+    },
+  } as ThemeOptions),
 };
 
 export default themes;

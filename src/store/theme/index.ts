@@ -25,7 +25,14 @@ function useTheme(): [Themes, Actions] {
     setThemeMode((mode: Themes) => (mode === Themes.DARK ? Themes.LIGHT : Themes.DARK));
   }, [setThemeMode]);
 
-  const memoizedActions = useMemo(() => ({ toggle }), [toggle]);
+  const setTheme = useCallback(
+    (mode: Themes) => {
+      setThemeMode(mode);
+    },
+    [setThemeMode],
+  );
+
+  const memoizedActions = useMemo(() => ({ toggle, setTheme }), [toggle, setTheme]);
 
   return [themeMode, memoizedActions];
 }

@@ -39,7 +39,7 @@ function SW() {
       notificationKey.current = notificationsActions.push({
         message: 'New content is available, click on reload button to update.',
         options: {
-          variant: 'warning',
+          variant: 'info',
           persist: true,
           action: (
             <>

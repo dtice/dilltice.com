@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
+import { Select } from '@mui/material';
 
 const FlexBox = styled(Box)({
   display: 'flex',
@@ -15,4 +16,14 @@ const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
   height: '100%',
 });
 
-export { FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox };
+const Page = styled(FullSizeCenteredFlexBox)({
+  flexDirection: 'column',
+  overflow: 'hidden',
+});
+
+const IconSelect = styled(Select)({
+  border: 0,
+  outline: 0,
+});
+
+export { FlexBox, CenteredFlexBox, FullSizeCenteredFlexBox, IconSelect, Page };
