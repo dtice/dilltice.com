@@ -8,7 +8,7 @@ function AboutMe() {
     <>
       <Meta title="About Me" />
       <FullSizeCenteredFlexBox flexDirection="column">
-        <Typography variant="h3">About Me</Typography>
+        <Typography variant="h3">Projects</Typography>
       </FullSizeCenteredFlexBox>
     </>
   );
