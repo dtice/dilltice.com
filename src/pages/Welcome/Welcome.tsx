@@ -1,12 +1,9 @@
 import Meta from '@/components/Meta';
-import { Page } from '@/components/styled';
-import { Typography } from '@mui/material';
+import { FullSizeCenteredFlexBox } from '@/components/styled';
+import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import Chevron from '@mui/icons-material/ChevronRight';
 
 function Welcome() {
-  // const isPortrait = useOrientation();
-
-  // const width = isPortrait ? '40%' : '30%';
-  // const height = isPortrait ? '30%' : '40%';
   const dillsBirthday = new Date(1996, 9, 13);
   const curTime = new Date();
 
@@ -14,17 +11,112 @@ function Welcome() {
     Math.floor((curTime.getTime() - dillsBirthday.getTime()) / (1000 * 3600 * 24 * 365));
 
   return (
-    <Page pb={20}>
-      <Meta title="Welcome" />
-      <Typography variant="h4" mb={2}>
-        Welcome to DillTice.com
-      </Typography>
-      <Typography variant="body1">Hello internet traveller,</Typography>
-      <Typography variant="body2">
-        My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from Spokane,
-        WA.
-      </Typography>
-    </Page>
+    <>
+      <FullSizeCenteredFlexBox className="welcome-hero" flexDirection="column" textAlign="center">
+        <div className="welcome-hero-inner">
+          <Meta title="Welcome" />
+          <Typography variant="h4">Welcome to DillTice.com</Typography>
+          <Typography variant="subtitle1" mb={2}>
+            Your one stop shop for everything Dill related
+          </Typography>
+        </div>
+        <Chevron
+          color="action"
+          fontSize="large"
+          className="scroll-chevron"
+          sx={{
+            position: 'absolute',
+            bottom: '10%',
+            rotate: '90deg',
+          }}
+        />
+      </FullSizeCenteredFlexBox>
+      <FullSizeCenteredFlexBox className="section welcome-1" flexDirection="column">
+        <Typography variant="h4" mb={2}>
+          About Me
+        </Typography>
+        <Typography variant="body1" textAlign="left">
+          Hello internet traveller,
+        </Typography>
+        <Typography variant="body1">
+          My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
+          Spokane, WA.
+        </Typography>
+      </FullSizeCenteredFlexBox>
+      <FullSizeCenteredFlexBox className="section welcome-2" flexDirection="column">
+        <Typography variant="h4" mb={2}>
+          Interests
+        </Typography>
+        <List sx={{ width: '75%' }}>
+          <ListItem>
+            <ListItemText primary="Software Development" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Video Games" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Music" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Outdoors" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Travel" />
+          </ListItem>
+        </List>
+      </FullSizeCenteredFlexBox>
+      <style>
+        {`
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(0);} 
+            40% {transform: translateX(-30px);} 
+            60% {transform: translateX(-15px);} 
+          } 
+          .scroll-chevron {
+            animation: bounce 2s infinite ease-in-out;
+          }
+          .welcome-hero {
+            position: relative;
+            width: 100%;
+            background-color: #000;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+          .welcome-hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url(/public/images/camping-forest-panorama.jpeg);
+            background-size: cover;
+            background-position-x: -800px;
+            background-attachment: fixed;
+            filter: contrast(1.25);
+            filter: brightness(0.75);
+            filter: blur(5px);
+          }
+
+          .welcome-hero-inner {
+            position: relative;
+          }
+
+          .section {
+            height: calc(100vh + 24px);
+            padding: 12px 24px;
+          }
+
+          .welcome-1 {
+            background-color: #fff;
+            color: #000;
+          }
+
+          .welcome-2 {
+            background-color: #000;
+          }
+        `}
+      </style>
+    </>
   );
 }
 
