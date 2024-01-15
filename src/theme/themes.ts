@@ -83,7 +83,7 @@ const themes: Record<Themes, ThemeOptions> = {
         main: '#F00',
       },
       text: {
-        primary: '#fff',
+        primary: '#F00',
       },
     },
     typography: {
@@ -120,6 +120,13 @@ const themes: Record<Themes, ThemeOptions> = {
         styleOverrides: {
           input: {
             cursor: `URL(${BoneCursorPointer}), auto`,
+          },
+        },
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: '#F00',
           },
         },
       },

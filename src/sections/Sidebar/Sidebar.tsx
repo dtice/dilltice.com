@@ -54,6 +54,7 @@ function Sidebar() {
         <Select
           fullWidth
           color="info"
+          size="small"
           value={theme}
           onChange={(e) => handleChangeTheme(e.target.value as Themes)}
           data-pw="theme-toggle"
