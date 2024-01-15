@@ -82,6 +82,9 @@ const themes: Record<Themes, ThemeOptions> = {
       info: {
         main: '#F00',
       },
+      text: {
+        primary: '#fff',
+      },
     },
     typography: {
       fontFamily: '"Ghost Skeleton", Regular',

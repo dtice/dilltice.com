@@ -1,7 +1,6 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
@@ -20,8 +19,8 @@ function Header() {
   const [theme] = useTheme();
 
   return (
-    <Box sx={{ flexGrow: 1 }} data-pw={`theme-${theme}`}>
-      <AppBar elevation={1} style={{ top: 0 }} position="sticky">
+    <>
+      <AppBar color="transparent" style={{ top: 0, boxShadow: 'none' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <FlexBox sx={{ alignItems: 'center' }}>
             <IconButton
@@ -44,22 +43,24 @@ function Header() {
             </Tooltip>
           </FlexBox>
         </Toolbar>
+        {theme === Themes.SPOOKY && (
+          <img
+            src={BloodBar}
+            draggable="false"
+            width="100%"
+            style={{
+              position: 'absolute',
+              top: '100%',
+              userSelect: 'none',
+              pointerEvents: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none',
+              zIndex: 99999,
+            }}
+          />
+        )}
       </AppBar>
-      {theme === Themes.SPOOKY && (
-        <img
-          src={BloodBar}
-          draggable="false"
-          width="100%"
-          style={{
-            position: 'absolute',
-            userSelect: 'none',
-            pointerEvents: 'none',
-            MozUserSelect: 'none',
-            msUserSelect: 'none',
-          }}
-        />
-      )}
-    </Box>
+    </>
   );
 }
 

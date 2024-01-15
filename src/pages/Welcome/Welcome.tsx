@@ -15,8 +15,14 @@ function Welcome() {
       <FullSizeCenteredFlexBox className="welcome-hero" flexDirection="column" textAlign="center">
         <div className="welcome-hero-inner">
           <Meta title="Welcome" />
-          <Typography variant="h4">Welcome to DillTice.com</Typography>
-          <Typography variant="subtitle1" mb={2}>
+          <Typography variant="h4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
+            Welcome to DillTice.com
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            mb={2}
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+          >
             Your one stop shop for everything Dill related
           </Typography>
         </div>
@@ -38,7 +44,7 @@ function Welcome() {
         <Typography variant="body1" textAlign="left">
           Hello internet traveller,
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" textAlign="center">
           My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
           Spokane, WA.
         </Typography>
@@ -77,7 +83,7 @@ function Welcome() {
           }
           .welcome-hero {
             position: relative;
-            width: 100%;
+            min-height: 100vh;
             background-color: #000;
             background-size: cover;
             background-position: center;
@@ -88,13 +94,11 @@ function Welcome() {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-image: url(/public/images/camping-forest-panorama.jpeg);
+            background-image: url(/images/camping-forest-panorama.jpeg);
             background-size: cover;
             background-position-x: -800px;
             background-attachment: fixed;
-            filter: contrast(1.25);
-            filter: brightness(0.75);
-            filter: blur(5px);
+            filter: contrast(1.25) brightness(0.5) blur(4px);
           }
 
           .welcome-hero-inner {
@@ -102,13 +106,9 @@ function Welcome() {
           }
 
           .section {
+            position: relative;
             height: calc(100vh + 24px);
             padding: 12px 24px;
-          }
-
-          .welcome-1 {
-            background-color: #fff;
-            color: #000;
           }
 
           .welcome-2 {
