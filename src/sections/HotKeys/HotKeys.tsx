@@ -10,9 +10,10 @@ import { FlexBox } from '@/components/styled';
 import useHotKeysDialog from '@/store/hotkeys';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
+import { Themes } from '@/theme/types';
 
 function HotKeys() {
-  const [, themeActions] = useTheme();
+  const [theme, themeActions] = useTheme();
   const [, sidebarActions] = useSidebar();
   const [isHotKeysDialogOpen, hotKeysDialogActions] = useHotKeysDialog();
 
@@ -21,7 +22,12 @@ function HotKeys() {
   // And as you know we can't use hooks inside loops (read "Rules of Hooks" - https://reactjs.org/docs/hooks-rules.html).
   // There is always a workaround, but sometimes it's better to avoid premature and unnecessary optimizations :)
   useHotkeys('alt+s', sidebarActions.toggle);
-  useHotkeys('alt+t', themeActions.toggle);
+  useHotkeys('alt+t', () => {
+    const curThemeIndex = Object.values(Themes).indexOf(theme);
+    const nextThemeIndex =
+      curThemeIndex === Object.values(Themes).length - 1 ? 0 : curThemeIndex + 1;
+    themeActions.setTheme(Object.values(Themes)[nextThemeIndex]);
+  });
   useHotkeys('alt+k', hotKeysDialogActions.toggle);
 
   return (

@@ -20,7 +20,7 @@ function Header() {
 
   return (
     <>
-      <AppBar color="transparent" style={{ top: 0, boxShadow: 'none' }}>
+      <AppBar color="transparent" style={{ top: 0, boxShadow: 'none' }} data-pw={`theme-${theme}`}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <FlexBox sx={{ alignItems: 'center' }}>
             <IconButton
@@ -29,6 +29,7 @@ function Header() {
               edge="start"
               color="info"
               aria-label="menu"
+              data-pw="sidebar-toggle"
               sx={{ mr: 1, position: 'sticky', top: 0 }}
             >
               <MenuIcon />

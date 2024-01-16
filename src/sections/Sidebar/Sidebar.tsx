@@ -57,11 +57,17 @@ function Sidebar() {
           size="small"
           value={theme}
           onChange={(e) => handleChangeTheme(e.target.value as Themes)}
-          data-pw="theme-toggle"
+          data-pw="theme-switch"
         >
-          <MenuItem value={Themes.LIGHT}>Light</MenuItem>
-          <MenuItem value={Themes.DARK}>Dark</MenuItem>
-          <MenuItem value={Themes.SPOOKY}>Spooky</MenuItem>
+          <MenuItem value={Themes.LIGHT} data-pw="theme-switch-light">
+            Light
+          </MenuItem>
+          <MenuItem value={Themes.DARK} data-pw="theme-switch-dark">
+            Dark
+          </MenuItem>
+          <MenuItem value={Themes.SPOOKY} data-pw="theme-switch-spooky">
+            Spooky
+          </MenuItem>
         </Select>
       </Box>
       <List sx={{ width: 250 }}>

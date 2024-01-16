@@ -1,6 +1,6 @@
 import Meta from '@/components/Meta';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Grid, List, ListItem, ListItemText, Typography } from '@mui/material';
 import Chevron from '@mui/icons-material/ChevronRight';
 
 function Welcome() {
@@ -12,7 +12,12 @@ function Welcome() {
 
   return (
     <>
-      <FullSizeCenteredFlexBox className="welcome-hero" flexDirection="column" textAlign="center">
+      <FullSizeCenteredFlexBox
+        className="welcome-hero"
+        flexDirection="column"
+        textAlign="center"
+        color="white"
+      >
         <div className="welcome-hero-inner">
           <Meta title="Welcome" />
           <Typography variant="h4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
@@ -27,7 +32,6 @@ function Welcome() {
           </Typography>
         </div>
         <Chevron
-          color="action"
           fontSize="large"
           className="scroll-chevron"
           sx={{
@@ -37,17 +41,33 @@ function Welcome() {
           }}
         />
       </FullSizeCenteredFlexBox>
-      <FullSizeCenteredFlexBox className="section welcome-1" flexDirection="column">
-        <Typography variant="h4" mb={2}>
-          About Me
-        </Typography>
-        <Typography variant="body1" textAlign="left">
-          Hello internet traveller,
-        </Typography>
-        <Typography variant="body1" textAlign="center">
-          My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
-          Spokane, WA.
-        </Typography>
+      <FullSizeCenteredFlexBox flexDirection="column" className="section welcome-1" width="100%">
+        <Grid container alignItems="center">
+          <Grid item xs={12} md={6}>
+            <div
+              style={{
+                margin: 'auto',
+                width: '480px',
+                height: '480px',
+                backgroundImage: 'url(/images/dill.jpeg)',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                filter: 'grayscale(100%) contrast(1.25) brightness(0.75)',
+              }}
+            ></div>
+          </Grid>
+          <Grid item xs={12} md={6} alignSelf="center">
+            <Typography variant="h4" textAlign="left" mb={2}>
+              Hello internet traveller,
+            </Typography>
+            <Typography variant="body1" maxWidth="600px">
+              My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
+              Spokane, WA. <br />
+              Keep scrolling to learn more about me, or use the sidebar to navigate to other pages
+              such as my resume, blog, or the sandbox!
+            </Typography>
+          </Grid>
+        </Grid>
       </FullSizeCenteredFlexBox>
       <FullSizeCenteredFlexBox className="section welcome-2" flexDirection="column">
         <Typography variant="h4" mb={2}>
@@ -106,13 +126,14 @@ function Welcome() {
           }
 
           .section {
+            width: 100%;
             position: relative;
             height: calc(100vh + 24px);
-            padding: 12px 24px;
           }
 
           .welcome-2 {
             background-color: #000;
+            color: #fff;
           }
         `}
       </style>
