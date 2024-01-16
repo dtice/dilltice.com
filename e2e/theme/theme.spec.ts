@@ -10,9 +10,11 @@ test.describe('test theme', () => {
     await expect(page.getByTestId('theme-dark')).toBeVisible();
   });
 
-  test('clicking on the theme toggle changes the theme', async ({ page }) => {
-    await page.getByTestId('theme-toggle').click();
+  test('changing theme select changes the theme', async ({ page }) => {
+    await page.getByTestId('sidebar-toggle').click();
+    await page.getByTestId('theme-switch').click();
+    await page.getByTestId('theme-switch-spooky').click();
 
-    await expect(page.getByTestId('theme-light')).toBeVisible();
+    await expect(page.getByTestId('theme-spooky')).toBeVisible();
   });
 });
