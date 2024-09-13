@@ -16,7 +16,7 @@ function Welcome() {
         <div className="welcome-hero-inner">
           <Meta title="Welcome" />
           <Typography variant="h4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
-            Welcome to DillTice.com
+            Welcome to DillTice.com. Hope you like it!
           </Typography>
           <Typography
             variant="subtitle1"
