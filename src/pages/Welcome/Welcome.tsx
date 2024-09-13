@@ -23,7 +23,7 @@ function Welcome() {
             mb={2}
             style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
           >
-            Your one stop shop for everything Dill related
+            Your one stop shop for everything Dill related Does this change anything?
           </Typography>
         </div>
         <Chevron
