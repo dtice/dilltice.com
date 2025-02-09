@@ -11,7 +11,7 @@ const repository = 'https://github.com/dtice/dilltice.com';
 const messages = {
   app: {
     crash: {
-      title: 'Oooops... Sorry, I guess, something went wrong. You can:',
+      title: 'Oops! Something went wrong',
       options: {
         email: `contact with author by this email - ${email}`,
         reset: 'Press here to reset the application',
@@ -19,12 +19,12 @@ const messages = {
     },
   },
   loader: {
-    fail: 'Hmmmmm, there is something wrong with this component loading process... Maybe trying later would be the best idea',
+    fail: 'Something went wrong with the loader',
   },
   images: {
-    failed: 'something went wrong during image loading :(',
+    failed: 'Image(s) failed to load',
   },
-  404: 'Hey bro? What are you looking for?',
+  404: 'The page you are looking for might have been removed, had its name changed or is temporarily unavailable.',
 };
 
 const dateFormat = 'MMMM DD, YYYY';
@@ -50,16 +50,5 @@ const defaultMetaTags = {
   image: '/cover.png',
   description: 'The personal website of Dillon Tice',
 };
-const giphy404 = 'https://giphy.com/embed/xTiN0L7EW5trfOvEk0';
 
-export {
-  loader,
-  notifications,
-  dateFormat,
-  messages,
-  repository,
-  email,
-  title,
-  defaultMetaTags,
-  giphy404,
-};
+export { loader, notifications, dateFormat, messages, repository, email, title, defaultMetaTags };

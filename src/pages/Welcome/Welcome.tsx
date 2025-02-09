@@ -1,6 +1,6 @@
 import Meta from '@/components/Meta';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Box, Divider, List, ListItem, ListItemText, Typography } from '@mui/material';
 import Chevron from '@mui/icons-material/ChevronRight';
 
 function Welcome() {
@@ -11,33 +11,43 @@ function Welcome() {
     Math.floor((curTime.getTime() - dillsBirthday.getTime()) / (1000 * 3600 * 24 * 365));
 
   return (
-    <>
-      <FullSizeCenteredFlexBox className="welcome-hero" flexDirection="column" textAlign="center">
-        <div className="welcome-hero-inner">
+    <div className="section-container">
+      <FullSizeCenteredFlexBox
+        className="welcome-hero section"
+        flexDirection="column"
+        textAlign="center"
+      >
+        <Box
+          className="welcome-hero-inner"
+          sx={{
+            backgroundColor: (theme) => theme.palette.background.default,
+            paddingX: 4,
+            paddingY: 2,
+            borderRadius: 2,
+            border: 1,
+            borderColor: (theme) => theme.palette.text.primary,
+            boxShadow: 4,
+          }}
+        >
           <Meta title="Welcome" />
-          <Typography variant="h4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>
-            Welcome to DillTice.com. Hope you like it!
+          <Typography variant="h4">Welcome to DillTice.com</Typography>
+          <Typography variant="subtitle1" mb={2}>
+            Your one stop shop for everything Dill related
           </Typography>
-          <Typography
-            variant="subtitle1"
-            mb={2}
-            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
-          >
-            Your one stop shop for everything Dill related Does this change anything?
-          </Typography>
-        </div>
+        </Box>
         <Chevron
-          color="action"
           fontSize="large"
           className="scroll-chevron"
           sx={{
+            backgroundColor: (theme) => theme.palette.background.default,
+            borderRadius: '50%',
             position: 'absolute',
             bottom: '10%',
             rotate: '90deg',
           }}
         />
       </FullSizeCenteredFlexBox>
-      <FullSizeCenteredFlexBox className="section welcome-1" flexDirection="column">
+      <FullSizeCenteredFlexBox className="section" flexDirection="column">
         <Typography variant="h4" mb={2}>
           About Me
         </Typography>
@@ -49,6 +59,7 @@ function Welcome() {
           Spokane, WA.
         </Typography>
       </FullSizeCenteredFlexBox>
+      <Divider />
       <FullSizeCenteredFlexBox className="section welcome-2" flexDirection="column">
         <Typography variant="h4" mb={2}>
           Interests
@@ -82,8 +93,6 @@ function Welcome() {
             animation: bounce 2s infinite ease-in-out;
           }
           .welcome-hero {
-            position: relative;
-            min-height: 100vh;
             background-color: #000;
             background-size: cover;
             background-position: center;
@@ -105,18 +114,22 @@ function Welcome() {
             position: relative;
           }
 
-          .section {
-            position: relative;
-            height: calc(100vh + 24px);
-            padding: 12px 24px;
+          .section-container {
+            height: 100vh;
+            overflow: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
           }
 
-          .welcome-2 {
-            background-color: #000;
+          .section {
+            position: relative;
+            height: calc(100vh + 12px);
+            padding: 12px 24px;
+            scroll-snap-align: center center;
           }
         `}
       </style>
-    </>
+    </div>
   );
 }
 

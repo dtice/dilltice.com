@@ -8,8 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-import WaterphoneSound from '@/theme/sounds/spooky/waterphone.mp3';
-import HorrorAmbience from '@/theme/sounds/spooky/horror-ambience.mp3';
+import WaterphoneSound from '/sound/waterphone.mp3?url';
+import HorrorAmbience from '/sound/horror-ambience.mp3?url';
 
 import routes from '@/routes';
 import useSidebar from '@/store/sidebar';
