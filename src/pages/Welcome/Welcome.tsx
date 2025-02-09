@@ -1,6 +1,14 @@
 import Meta from '@/components/Meta';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
-import { Box, Divider, List, ListItem, ListItemText, Typography } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Grid2 as Grid,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from '@mui/material';
 import Chevron from '@mui/icons-material/ChevronRight';
 
 function Welcome() {
@@ -47,17 +55,21 @@ function Welcome() {
           }}
         />
       </FullSizeCenteredFlexBox>
-      <FullSizeCenteredFlexBox className="section" flexDirection="column">
-        <Typography variant="h4" mb={2}>
-          About Me
-        </Typography>
-        <Typography variant="body1" textAlign="left">
-          Hello internet traveller,
-        </Typography>
-        <Typography variant="body1" textAlign="center">
-          My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
-          Spokane, WA.
-        </Typography>
+      <FullSizeCenteredFlexBox className="section">
+        <Grid container>
+          <Grid textAlign="center" size={4}>
+            <Typography variant="h4" mb={2}>
+              About Me
+            </Typography>
+          </Grid>
+          <Grid size={4}>
+            <Typography variant="body1">Hello internet traveller,</Typography>
+            <Typography variant="body1">
+              My name is Dillon Tice. I am a {dillsCurrentAge()} year old software developer from
+              Spokane, WA.
+            </Typography>
+          </Grid>
+        </Grid>
       </FullSizeCenteredFlexBox>
       <Divider />
       <FullSizeCenteredFlexBox className="section welcome-2" flexDirection="column">
