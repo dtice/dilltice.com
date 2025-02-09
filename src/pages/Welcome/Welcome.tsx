@@ -1,15 +1,119 @@
 import Meta from '@/components/Meta';
 import { FullSizeCenteredFlexBox } from '@/components/styled';
-import {
-  Box,
-  Divider,
-  Grid2 as Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { Box, Divider, Grid2 as Grid, SxProps, Theme, Typography } from '@mui/material';
 import Chevron from '@mui/icons-material/ChevronRight';
+import { PropsWithChildren } from 'react';
+
+function WelcomeHero({ children }: PropsWithChildren) {
+  return (
+    <Section sx={{ justifyContent: 'center' }}>
+      <Box
+        sx={{
+          backgroundColor: (theme) => theme.palette.background.default,
+          paddingX: 4,
+          paddingY: 2,
+          borderRadius: 2,
+          border: 1,
+          borderColor: (theme) => theme.palette.text.primary,
+          boxShadow: 4,
+        }}
+      >
+        {children}
+      </Box>
+      <Chevron
+        fontSize="large"
+        sx={{
+          position: 'absolute',
+          bottom: '10%',
+          rotate: '90deg',
+          animation: 'bounce 2s infinite ease-in-out',
+        }}
+      />
+    </Section>
+  );
+}
+
+function SectionContainer({ children, sx }: PropsWithChildren<{ sx?: SxProps<Theme> }>) {
+  return (
+    <Box
+      height="100vh"
+      width="100vw"
+      sx={{
+        overflow: 'auto',
+        scrollSnapType: 'y mandatory',
+        scrollBehavior: 'smooth',
+        ...sx,
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
+
+function Section({ children, sx }: PropsWithChildren<{ sx?: SxProps<Theme> }>) {
+  return (
+    <FullSizeCenteredFlexBox
+      position="relative"
+      height="calc(100vh + 12px)"
+      padding={2}
+      sx={{ scrollSnapAlign: 'center center', ...sx }}
+    >
+      {children}
+    </FullSizeCenteredFlexBox>
+  );
+}
+
+function FileTree({ children }: PropsWithChildren) {
+  return (
+    <Box sx={{ fontFamily: 'monospace', color: 'text.secondary' }}>
+      <FileTreeFolder isRoot={true}>{children}</FileTreeFolder>
+    </Box>
+  );
+}
+
+function FileTreeFolder({
+  children,
+  name,
+  isRoot,
+}: PropsWithChildren<{ name?: string; isRoot?: boolean }>) {
+  return (
+    <Box>
+      <FileTreeFile name={name} isRoot={isRoot} />
+      <Box sx={{ borderLeft: 2, borderColor: 'text.secondary', pl: 2, ml: 1 }}>{children}</Box>
+    </Box>
+  );
+}
+
+function FileTreeFile({ name, isRoot }: { name?: string; isRoot?: boolean }) {
+  const beforeStyles = isRoot
+    ? {}
+    : {
+        content: `''`,
+        width: '24px',
+        height: '1px',
+        backgroundColor: 'white',
+        marginLeft: '-16px',
+        marginRight: 1,
+      };
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        paddingTop: 1,
+        marginTop: -1.5,
+        '&::before': beforeStyles,
+      }}
+    >
+      {name && (
+        <Typography variant="body1" sx={{ fontFamily: 'monospace', color: 'text.secondary' }}>
+          {name}
+        </Typography>
+      )}
+    </Box>
+  );
+}
 
 function Welcome() {
   const dillsBirthday = new Date(1996, 9, 13);
@@ -19,43 +123,15 @@ function Welcome() {
     Math.floor((curTime.getTime() - dillsBirthday.getTime()) / (1000 * 3600 * 24 * 365));
 
   return (
-    <div className="section-container">
-      <FullSizeCenteredFlexBox
-        className="welcome-hero section"
-        flexDirection="column"
-        textAlign="center"
-      >
-        <Box
-          className="welcome-hero-inner"
-          sx={{
-            backgroundColor: (theme) => theme.palette.background.default,
-            paddingX: 4,
-            paddingY: 2,
-            borderRadius: 2,
-            border: 1,
-            borderColor: (theme) => theme.palette.text.primary,
-            boxShadow: 4,
-          }}
-        >
-          <Meta title="Welcome" />
-          <Typography variant="h4">Welcome to DillTice.com</Typography>
-          <Typography variant="subtitle1" mb={2}>
-            Your one stop shop for everything Dill related
-          </Typography>
-        </Box>
-        <Chevron
-          fontSize="large"
-          className="scroll-chevron"
-          sx={{
-            backgroundColor: (theme) => theme.palette.background.default,
-            borderRadius: '50%',
-            position: 'absolute',
-            bottom: '10%',
-            rotate: '90deg',
-          }}
-        />
-      </FullSizeCenteredFlexBox>
-      <FullSizeCenteredFlexBox className="section">
+    <SectionContainer>
+      <WelcomeHero>
+        <Meta title="Welcome" />
+        <Typography variant="h4">Welcome to DillTice.com</Typography>
+        <Typography variant="subtitle1" mb={2}>
+          Your one stop shop for everything Dill related
+        </Typography>
+      </WelcomeHero>
+      <Section>
         <Grid container>
           <Grid textAlign="center" size={4}>
             <Typography variant="h4" mb={2}>
@@ -70,78 +146,36 @@ function Welcome() {
             </Typography>
           </Grid>
         </Grid>
-      </FullSizeCenteredFlexBox>
+      </Section>
       <Divider />
-      <FullSizeCenteredFlexBox className="section welcome-2" flexDirection="column">
-        <Typography variant="h4" mb={2}>
-          Interests
-        </Typography>
-        <List sx={{ width: '75%' }}>
-          <ListItem>
-            <ListItemText primary="Software Development" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Video Games" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Music" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Outdoors" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Travel" />
-          </ListItem>
-        </List>
-      </FullSizeCenteredFlexBox>
+      <Section>
+        <Box>
+          <FileTree>
+            <FileTreeFolder name="projects">
+              <FileTreeFile name="dilltice.com" />
+              <FileTreeFile name="bonemash" />
+              <FileTreeFolder name="subprojects">
+                <FileTreeFile name="dilltice.com" />
+                <FileTreeFile name="bonemash" />
+              </FileTreeFolder>
+            </FileTreeFolder>
+            <FileTreeFolder name="personal">
+              <FileTreeFile name="resume" />
+              <FileTreeFile name="cover-letter" />
+            </FileTreeFolder>
+          </FileTree>
+        </Box>
+      </Section>
       <style>
         {`
           @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateX(0);} 
             40% {transform: translateX(-30px);} 
             60% {transform: translateX(-15px);} 
-          } 
-          .scroll-chevron {
-            animation: bounce 2s infinite ease-in-out;
-          }
-          .welcome-hero {
-            background-color: #000;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-          }
-          .welcome-hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url(/images/camping-forest-panorama.jpeg);
-            background-size: cover;
-            background-position-x: -800px;
-            background-attachment: fixed;
-            filter: contrast(1.25) brightness(0.5) blur(4px);
-          }
-
-          .welcome-hero-inner {
-            position: relative;
-          }
-
-          .section-container {
-            height: 100vh;
-            overflow: auto;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-          }
-
-          .section {
-            position: relative;
-            height: calc(100vh + 12px);
-            padding: 12px 24px;
-            scroll-snap-align: center center;
           }
         `}
       </style>
-    </div>
+    </SectionContainer>
   );
 }
 
